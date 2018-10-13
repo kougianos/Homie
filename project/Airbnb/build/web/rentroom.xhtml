@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_wallet"></span>
+                                <h1>Rent the Room</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Us -->
+                <div class="contact-us-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-7 contact-form wow fadeInLeft">
+                                
+                                <div class="portfolio-box web-design">
+		                	<div class="portfolio-box-container">
+			                	<img src="#{roomProfileController.room.photo}"/>
+			                </div>
+		                </div>
+                                
+                                
+                                <h:form>
+                                    <h:messages globalOnly="true" styleClass="error"/>
+                                    <h3>General Information</h3>
+                                    <div class="form-group">
+                                        <h:outputLabel for="location">Location</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="location" value="#{roomProfileController.room.location}" /></span>
+                                        
+                                    </div>    
+                                    <div class="form-group">
+                                        <h:outputLabel for="available_from">Available from</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="available_from" value="#{roomProfileController.room.availableFrom}"/></span>
+                                        
+                                    </div>  
+                                    <div class="form-group">
+                                        <h:outputLabel for="available_till">Available till</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="available_till" value="#{roomProfileController.room.availableTill}"  /></span>
+                                        
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="price">Price</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="price" value="#{roomProfileController.room.price}" />  €/day</span>
+                                        
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="area">Area</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="area" value="#{roomProfileController.room.area}" /> m<sup>2</sup></span>
+                                        
+                                    </div>   
+                                    <div class="form-group">
+                                        <h:outputLabel for="people_number">People number</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="people_number" value="#{roomProfileController.room.peopleNumber}"  /></span>
+                                        
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <h:outputLabel for="plus_person_price">Plus Person Price</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="plus_person_price" value="#{roomProfileController.room.plusPersonPrice}" />  €</span>
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <h:outputLabel for="arrival_time">Arrival Time</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="arrival_time" value="#{roomProfileController.room.arrivalTime}" /></span>
+                                    </div> 
+                                                                                               
+                                    <h3>Finish Rental</h3>                              
+                                     <div class="form-group">
+                                        <h:outputLabel for="rent_from">Rent the room from</h:outputLabel>
+                                        <h:inputText class="datepicker" id="rent_from" value="#{rentroom.rent_from}" required="true" requiredMessage="Please enter date" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                                        </h:inputText>
+                                        <h:message for="rent_from" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="rent_to">Rent the room till</h:outputLabel>
+                                        <h:inputText class="datepicker" id="rent_to" value="#{rentroom.rent_to}" required="true" requiredMessage="Please enter date" >
+                                        <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                                        </h:inputText>
+                                        <h:message for="rent_to" styleClass="error"/>
+                                    </div> 
+                               
+                                    <div class="form-group">
+                                        <h:outputLabel for="visitor_arrival_time">Arrival time</h:outputLabel>
+                                        <h:inputText id="visitor_arrival_time" value="#{rentroom.arrival_time}" >
+                                        <f:convertDateTime pattern="H:m"/> 
+                                        </h:inputText>
+                                    </div> 
+                                    
+                                    <h:commandButton value="Done!" class="big-link-1" action="#{rentroom.rentRoom()}" />
+                                
+                                  </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

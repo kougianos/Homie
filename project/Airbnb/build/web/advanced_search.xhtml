@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2 col-sm-offset-1 page-title wow fadeIn">
+                                <span  aria-hidden="true" class="icon_search"></span>
+                                <h3>Advanced Search</h3> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <h:form>
+                    <div class="contact-us-container" style="margin-bottom: -2%">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-7 contact-form wow fadeInLeft">
+                                    <div class="form-group">
+                                        <h:outputLabel for="destination">Destination</h:outputLabel>
+                                        <h:inputText value="#{advancedSearch.destination}" />
+
+                                    </div>    
+                                    <div class="form-group">
+                                        <h:outputLabel for="checkin">Check In Date</h:outputLabel>
+                                        <h:inputText class="datepicker" value="#{advancedSearch.checkin}" required="true">
+                                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                        </h:inputText>
+                                        <h:message for="checkin" styleClass="error"/>
+                                    </div>  
+                                    <div class="form-group">
+                                        <h:outputLabel for="checkout">Check Out Date</h:outputLabel>
+                                        <h:inputText class="datepicker" value="#{advancedSearch.checkout}" required="true">
+                                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                        </h:inputText>
+                                        <h:message for="checkout" styleClass="error"/>
+                                    </div>  
+                                    <div style="float: left;" class="form-group">
+                                        <h:outputLabel for="guests">Number of Guests</h:outputLabel> <br/>
+                                        <h:selectOneMenu id="guest"   value="#{advancedSearch.guests}" converter="javax.faces.Integer"> 
+                                            <f:selectItem itemValue="-1" itemLabel = "Any" /> 
+                                            <f:selectItem itemValue="2" itemLabel = "2 Guests" /> 
+                                            <f:selectItem itemValue="3" itemLabel = "3 Guests" /> 
+                                            <f:selectItem itemValue="4" itemLabel = "4 Guests" /> 
+                                            <f:selectItem itemValue="5" itemLabel = "5 Guests" /> 
+                                            <f:selectItem itemValue="6" itemLabel = "6 Guests" /> 
+                                            <f:selectItem itemValue="7" itemLabel = "7 Guests" /> 
+                                            <f:selectItem itemValue="8" itemLabel = "8 Guests" /> 
+                                            <f:selectItem itemValue="9" itemLabel = "9 Guests" /> 
+                                            <f:selectItem itemValue="10" itemLabel = "10 Guests" /> 
+                                        </h:selectOneMenu> 	
+
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel style="margin-left: 40px;" for="roomtype">Room Type</h:outputLabel> <br/>
+                                        <h:selectOneMenu  style="margin-left: 30px;" value="#{advancedSearch.roomtype}" > 
+                                            <f:selectItem itemValue="-1" itemLabel = "Any" /> 
+                                            <f:selectItem itemValue="1" itemLabel = "Motel" /> 
+                                            <f:selectItem itemValue="2" itemLabel = "Room" /> 
+                                            <f:selectItem itemValue="3" itemLabel = "Apartment" /> 
+                                            <f:selectItem itemValue="4" itemLabel = "Studio" /> 
+                                        </h:selectOneMenu> 	
+
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="maxcost">Maximum Cost</h:outputLabel>
+                                        <h:inputText id="maxcost" value="#{advancedSearch.maxcost}"  />
+
+                                    </div>   
+                                    <div style="float: left; width: 15%" class="form-group">
+                                        <h:outputLabel style="margin-left: 32%; font-size: large" for="wifi">Wifi</h:outputLabel> <br/>
+                                        <h:selectOneMenu    value="#{advancedSearch.wifi}"> 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care" />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <div style="float: left;" class="form-group">
+                                        <h:outputLabel style="margin-left: 22%; font-size: large" for="aircondition">Air Condition</h:outputLabel> <br/>
+                                        <h:selectOneMenu value="#{advancedSearch.aircondition}" style="margin-left: 26%" > 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care" />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <div style="margin-left: 37%; width: 205px"  class="form-group">
+                                        <h:outputLabel style="margin-left: 22%; font-size: large" for="heating">Heating</h:outputLabel> <br/>
+                                        <h:selectOneMenu  value="#{advancedSearch.heating}" style="margin-left: 14%" > 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care" />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <div style="float: left;" class="form-group">
+                                        <h:outputLabel style=" font-size: large" for="parking">Parking Lot</h:outputLabel> <br/>
+                                        <h:selectOneMenu  value="#{advancedSearch.parking}"  > 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care" />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <div style="float: left; margin-left: 30px" class="form-group">
+                                        <h:outputLabel style="margin-left: 10px; font-size: large" for="tv">Television</h:outputLabel> <br/>
+                                        <h:selectOneMenu  value="#{advancedSearch.tv}" style="margin-left: 6%" > 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care"  />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <div style="float: left; margin-left: 30px" class="form-group">
+                                        <h:outputLabel style="margin-left: 10px; font-size: large" for="elevator">Elevator</h:outputLabel> <br/>
+                                        <h:selectOneMenu  value="#{advancedSearch.elevator}" style="margin-left: 6%" > 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care"  />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <div style="margin-left: 62%; width: 139px" class="form-group">
+                                        <h:outputLabel style="margin-left: 24%; font-size: large" for="oven">Oven</h:outputLabel> <br/>
+                                        <h:selectOneMenu value="#{advancedSearch.oven}" style="margin-left: 6%" > 
+
+                                            <f:selectItem itemValue="-1" itemLabel = "Don't care" />
+                                            <f:selectItem itemValue="1" itemLabel = "Yes" />
+                                            <f:selectItem itemValue="2" itemLabel = "No" /> 
+
+                                        </h:selectOneMenu> 	
+
+                                    </div>
+                                    <h:commandButton value="Search" class="big-link-1" action="#{advancedSearch.search}" />
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Latest work -->               
+                    <div class="work-container" style="margin-top: -100px">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 work-title wow fadeIn">                                
+                                    <h2><h:outputText rendered="#{not empty advancedSearch.roomList}" value="Our rooms" /></h2>
+                                    <h4><h:outputText rendered="#{empty advancedSearch.roomList}" value="Please make a search" /></h4>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 7%; margin-top: -7%">
+                                    <div class="col-sm-12 portfolio-masonry">
+                                        <ui:repeat  value="#{advancedSearch.roomList}" var="room">
+                                            <div class="portfolio-box web-design" style="height: 260px; width: 305px; float: left;">
+                                                <div style="width: 100%; height: 108%;" class="portfolio-box-container">
+                                                    <img style="width: 100%; height: 56%" src="#{room.photo}"/>
+                                                    <div style="width: 50%; float: left">
+                                                        <h3 style="font-size: 100%; text-align: left; margin-left: 3%">#{room.description}</h3>
+                                                        <p style="text-align: left; margin-left: 4%">Area: #{room.area} m<sup>2</sup> <br/> #{room.price} €/day</p>
+                                                    </div>
+                                                    <div style="margin-top: 10%">
+                                                        <h:button  value="See Room" class = "big-link-1" outcome="/room_profile" >  
+                                                            <f:param name="idroom" value="#{ room.idroom }" />
+                                                            <!--<f:param name="idroom" value="#{room.idroom}" />-->
+                                                        </h:button>
+                                                        <h:button rendered="#{sessionController.loggedInUser.username ne room.userList.get(0).username}" value="Contact Owner" class = "big-link-1" outcome="/messages/compose" >  
+                                                            <f:param name="idroom" value="#{ room.idroom }" />
+                                                            <!--<f:param name="idroom" value="#{room.idroom}" />-->
+                                                        </h:button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ui:repeat>		                
+                                    </div> 
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

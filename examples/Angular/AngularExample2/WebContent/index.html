@@ -1,0 +1,19 @@
+<html >
+	<head>
+		<title>UI Router Demo App </title>
+	</head>
+	<body ng-app="app">
+	
+		<h2>AngularJS Routing Application</h2>
+        <ul>
+            <li><a ui-sref="default">Default Route</a></li>
+            <li><a ui-sref="italian">Italian Route</a></li>
+        </ul>
+        
+        <ui-view></ui-view>
+         
+		<script src="node_modules/angular/angular.js"></script>
+   	    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="hello.js"></script>
+	</body>
+</html>

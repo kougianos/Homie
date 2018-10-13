@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <head> 
+        <script name="jquery/jquery.js" library="primefaces"></script>
+    </head>
+    <body>
+        <ui:composition>
+            <!-- Top menu -->
+            <nav class="navbar" role="navigation">
+                <div class="container">
+                    <div class="navbar-header" style="margin-right: 200px">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a style="margin-left: 39px" class="navbar-brand" href="/Airbnb/faces/index.xhtml">Gioia - Bootstrap Business Template</a> <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                        
+                    </div>
+                    <div>
+                        <h:form rendered="#{empty sessionController.loggedInUser}" class="navbar-form navbar-right" style="margin-right: 130px">
+                            <h:panelGrid  >
+                                <div style="display: block" class="form-group">
+                                    <h:outputText value="Username"/>
+                                    <h:inputText id="username" value="#{sessionController.username}" required="true" requiredMessage="Please enter your username" />
+                                    <h:message for="username" styleClass="error"/>
+                                </div>
+                                <div style="display: block" class="form-group">
+                                    <h:outputText value="Password" />
+                                    <h:inputSecret id="password" value="#{sessionController.password}" required="true" requiredMessage="Please enter your password" />
+                                    <h:message for="password" styleClass="error"/>
+                                </div>
+                                <div style="margin-top: 10px;"> <h:commandButton style="float: left" id="login" value="login" class="logout_button" action="#{sessionController.login()}" /> </div>
+                                <h:messages globalOnly="true" styleClass="error"/>
+                                <div>
+                                    <p style="height: 10px; text-align: left;">Don't have an account?</p>
+                                    <h:link style="float: left" outcome="/register" value="Register here"/>
+                                </div>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                    <img class="profpic" src="#{sessionController.loggedInUser.photo}" />
+                    <div>
+                        <h:form style="float: right; margin-right: 140px; margin-top: 20px" rendered="#{not empty sessionController.loggedInUser}">
+                            <h:link style="font-size: 18px" outcome="/userservices/profile"> 
+                                #{sessionController.loggedInUser.username}
+                            </h:link> <br></br>
+                            <h:commandButton id="logout" value="logout" class="logout_button" action="#{sessionController.logout()}" />
+                        </h:form>
+                    </div>
+
+                    <br/> <br/> <br/>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-1" style="margin-right:39px">
+                        <ul class="nav navbar-nav navbar-left" style="margin-left: -390px; margin-top: 30px;">						
+
+                            <li>
+                                <h:link outcome="/index" >
+                                    <span aria-hidden="true" class="icon_house"></span><br/>Home
+                                </h:link>
+                            </li>
+
+                            <li>
+                                <h:link outcome="/portfolio" >
+                                    <span aria-hidden="true" class="icon_camera"></span><br/>Portfolio
+                                </h:link> 
+                            </li>
+                            <li>
+                                <h:link rendered="#{not empty sessionController.loggedInUser}" outcome="/userservices/recommendations">
+                                    <span aria-hidden="true" class="icon_star"></span><br/>Top
+                                </h:link>
+                            </li>  
+                            <li>
+                                <h:link rendered="#{sessionController.can_administer}" outcome="/adminservices/services" >
+                                    <span aria-hidden="true" class="icon_tools"></span><br/>Admin
+                                </h:link>
+                            </li>
+                            <li>
+                                <h:link rendered="#{not empty sessionController.loggedInUser}" outcome="/userservices/profile" >
+                                    <span aria-hidden="true" class="icon_profile"></span><br/>Profile
+                                </h:link> 
+                            </li>
+                            <li>
+                                <h:link rendered="#{sessionController.loggedInUser.active and sessionController.can_offer}" outcome="/userservices/add_room">
+                                    <span aria-hidden="true" class="icon_plus_alt"></span><br/>Add a Room
+                                </h:link>
+                            </li>
+                            <li>
+                                <h:link rendered="#{not empty sessionController.loggedInUser}" outcome="/messages/messages" >
+                                    <span aria-hidden="true" class="icon_mail"></span><br/>Messages
+                                </h:link>
+                            </li>
+                            <li>
+                                <h:link rendered="#{not empty sessionController.loggedInUser}" outcome="/userservices/myrentedrooms">
+                                    <span aria-hidden="true" class="icon_house_alt"></span><br/>My Rented Rooms
+                                </h:link>
+                            </li>
+                            <li>
+                                <h:link rendered="#{sessionController.loggedInUser.active and sessionController.can_offer}" outcome="/renterservices/myrooms" >
+                                    <span aria-hidden="true" class="icon_house"></span><br/>My Rooms
+                                </h:link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </ui:composition>    
+
+    </body>
+
+</html>

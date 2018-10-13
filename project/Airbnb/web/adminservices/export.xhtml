@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_tools"></span>
+                                <h1>Administration Services</h1>
+                                <h4>Export dataset</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Full Width Text -->
+                <div class="services-full-width-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 services-full-width-text wow fadeInLeft">
+                                <h3>Export the dataset</h3>
+                                <p>
+                                    In order to export the dataset click the following link:                                   
+                                </p>
+
+                                <h:form>
+                                    <div style="margin-left: -13px" class="form-group">
+                                        <a href="#{request.contextPath}/export" class="btn"> Export</a>
+                                    </div>
+                                </h:form>
+                                <h:button style="margin-left: -2px;" outcome="/adminservices/services" value="Back" class="logout_button" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

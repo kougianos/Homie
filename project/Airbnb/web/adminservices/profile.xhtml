@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_profile"></span>
+                                <h1>profile of #{ profileManagementController.user.username }</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-box web-design" style="margin-left: 15%">
+                    <img src="#{profileManagementController.user.photo}"/>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="contact-us-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-7 contact-form wow fadeInLeft">
+                                <p><h:messages globalOnly="true" styleClass="error"/> </p>
+
+                                <h:form>
+                                    <div class="form-group">
+                                        <h:outputLabel for="username">Username</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="username" value="#{ profileManagementController.user.username}" /></span>
+                                        <h:message for="username" styleClass="error"/>
+                                    </div>    
+                                    <div class="form-group">
+                                        <h:outputLabel for="password">Password</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="password" value="#{profileManagementController.user.password}"/></span>
+                                        <h:message for="password" styleClass="error"/>
+                                    </div>  
+                                    <div class="form-group">
+                                        <h:outputLabel for="name">Name</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="name" value="#{profileManagementController.user.name}"  /></span>
+                                        <h:message for="name" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="surname">Surname</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="surname" value="#{profileManagementController.user.surname}" /></span>
+                                        <h:message for="surname" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="email">e-mail</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="email" value="#{profileManagementController.user.email}" /></span>
+                                        <h:message for="email" styleClass="error"/>
+                                    </div>   
+                                    <div class="form-group">
+                                        <h:outputLabel for="phone">Phone</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="phone" value="#{profileManagementController.user.phone}"  /></span>
+                                        <h:message for="phone" styleClass="error"/>
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <h:outputLabel for="photo">Photo</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="photo" value="#{profileManagementController.user.photo}" /></span>
+                                        <h:message for="photo" styleClass="error"/>
+                                    </div> 
+
+
+                                    <h:commandButton value="deactivate" rendered="#{ profileManagementController.user.active eq true }" class="big-link-1" action="#{ profileManagementController.deactivate() }" />
+                                    <h:commandButton value="activate" rendered="#{ profileManagementController.user.active eq false }" class="big-link-1" action="#{ profileManagementController.activate() }" />
+                                    <div class="divider"/>
+                                    <h:link class ="big-link-1" value="Back to list" outcome="/adminservices/see_users" />
+                                </h:form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

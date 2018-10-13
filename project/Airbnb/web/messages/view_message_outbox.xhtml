@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <div class="page-title-container">
+                    <div class="container">
+                        <div style="float: left" class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span style="margin-right: -5px" aria-hidden="true" class="icon_mail"></span> <br/> <br/> 
+                                <p style="font-size: 24px"> Message Details </p>
+                            </div>
+                            <div><p>Sender: <h:outputLabel class="MessageDetails"> #{viewMessageController.message.user.username}</h:outputLabel></p></div>   <br/>
+                            <div><p>Recipient: <h:outputLabel class="MessageDetails">#{viewMessageController.message.user1.username}</h:outputLabel></p> </div> <br/>
+                            <div><p>Associated Room: <h:outputLabel class="MessageDetails">#{viewMessageController.message.idroom.idroom}</h:outputLabel></p></div> <br/> 
+                            <div><p>Date: <h:outputLabel class="MessageDetails">#{viewMessageController.message.date}</h:outputLabel></p></div> <br/> 
+                            <p>Message Text </p> <br/>
+                            <p style="font-size: 14px" class="MessageDetails">#{viewMessageController.message.messagetext}</p> <br/>
+                            <h:button style="margin-top: 32px;" value="Back to Outbox" outcome="/messages/outbox" class="logout_button" />
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

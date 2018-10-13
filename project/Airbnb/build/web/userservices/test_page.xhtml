@@ -1,0 +1,16 @@
+<h3>Rate now</h3>
+                            <!--<ul class="rate-area" value="#{rentedroom.rating}">-->
+                                
+                                <hr />
+                                <span class="rating">
+                                <h:selectOneRadio class="rate-area" value="#{rentedroom.rating}">
+                                    <f:selectItem itemValue="5"  itemLabel="Amazing" />
+                                    <f:selectItem itemValue="4" itemLabel="Good "/>
+                                    <f:selectItem itemValue="3"  itemLabel="Average " />
+                                    <f:selectItem itemValue="2"  itemLabel="Not Good " />
+                                    <f:selectItem itemValue="1"  itemLabel="Bad" />
+                            
+                                </h:selectOneRadio>
+                                    <br/>
+                                <h:commandButton  value="Save rating" class="big-link-1" action="#{rentedroom.saverating}" />
+                                </span>

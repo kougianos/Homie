@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/template/layout.xhtml</url>
+            <bookmark id="1">
+                <name/>
+                <line>3</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/RulesModel.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/SpaceModel.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/RoomModel.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/dao/RoomDAO.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/UserRentsRoomModel.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/FacilitiesModel.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/RoomWrapper.java</file>
+            <file>file:/home/valia/Desktop/ted/project/Airbnb/src/java/export/model/UserRentsRoomWrapper.java</file>
+        </group>
+    </open-files>
+</project-private>

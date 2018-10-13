@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   
+    <h:body>
+        
+        <ui:composition template="template/layout.xhtml">
+        <ui:define name="content">
+             <!-- Page Title -->
+        <div class="page-title-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                        <span aria-hidden="true" class="icon_camera"></span>
+                        <h1>Results</h1><br/>
+                        <p>Pick a room to view details</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+               <div class="services-container">
+                    <div class="container">
+                        <div class="search">
+
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="form-section">
+                                        <div class="row">
+                                            <h:form role="form">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h:inputText class="form-control" id="location" a:placeholder="Where?" value="#{searchController.location}" required="true" requiredMessage="Please enter a location"/>
+                                                        <h:message for="location" styleClass="error"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="checkin">Check in</label>
+                                                        <div class="input-group">
+                                                            <h:inputText class="form-control" id="checkin" a:placeholder="Checkin date" value="#{searchController.checkin}" required="true" requiredMessage="Please enter a checkin date">                                                            
+                                                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                            </h:inputText>
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                        </div>
+                                                        <h:message for="checkin" styleClass="error"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <h:inputText  class="form-control" id="checkout" a:placeholder="Checkout date" value="#{searchController.checkout}" required="true" requiredMessage="Please enter a checkout date">
+                                                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                            </h:inputText>
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                        </div>
+                                                        <h:message for="checkout" styleClass="error"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="guest">Guest</label>
+
+                                                        <h:selectOneMenu id="guest"  class="form-control" value="#{searchController.numberofguests}" converter="javax.faces.Integer"> 
+                                                            <f:selectItem itemValue="-1" itemLabel = "Any" /> 
+                                                            <f:selectItem itemValue="1" itemLabel = "1 Guest" /> 
+                                                            <f:selectItem itemValue="2" itemLabel = "2 Guest" /> 
+                                                            <f:selectItem itemValue="3" itemLabel = "3 Guest" /> 
+                                                            <f:selectItem itemValue="4" itemLabel = "4 Guest" /> 
+                                                        </h:selectOneMenu> 	
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <h:commandButton class="btn btn-default btn-primary" action="#{searchController.search()}" value="Search" />
+                                                </div>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+         
+        <!-- Portfolio -->
+        <div class="portfolio-container">
+	        <div class="container">
+	          
+	            <div class="row">
+	            	<div class="col-sm-12 portfolio-masonry">
+                            <ui:repeat value="#{portfolioController.roomList}" var="room">
+		                <div class="portfolio-box web-design">
+		                	<div class="portfolio-box-container">
+			                	<img src="#{request.contextPath}/resources/photos/room1.jpeg" alt="" data-at2x="#{request.contextPath}/resources/photos/room1.jpeg"/>
+			                	<div class="portfolio-box-text">
+                                                <h3>Room #{room.idroom}</h3>
+                                                <p>#{room.area} m<sup>2</sup> #{room.price} </p>
+                                                <h:link value="see room" class = "big-link-1" outcome="/room_profile" >  
+                                                     <f:param name="idroom" value="#{ room.idroom }" />                                                     
+                                                </h:link>
+                                                </div>
+			                </div>
+		                </div>
+                            </ui:repeat>
+
+		                
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        
+        <!-- Call To Action -->
+        <div class="call-to-action-container">
+        	<div class="container">
+	            <div class="row">
+	                <div class="col-sm-12 call-to-action-text wow fadeInLeftBig">
+	                    <p>
+	                    	Do you want to work on a <span class="colored-text">new project</span> with us? 
+	                    	Click on the red button to contact us and get a quote.
+	                    </p>
+	                    <div class="call-to-action-button">
+	                        <a class="big-link-3" href="contact.html">Contact Us Now!</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <html xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+            <h:body>
+                <ui:composition template="/template/layout.xhtml">
+
+                    <ui:define name="content">
+                        <!-- Page Title -->
+                        <div class="page-title-container">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                        <span aria-hidden="true" class="icon_plus_alt"></span>
+                                        <h1>Add a room</h1><br/>
+                                        <p>Add your room to our webpage and gain money!!!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="contact-us-container">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-7 contact-form wow fadeInLeft">
+                                        <h2>General Description</h2>
+                                        <p><h:messages globalOnly="true" styleClass="error"/> </p>
+                                        <h:form>
+                                            <p><h:messages globalOnly="true" styleClass="error"/> </p>
+                                            <div class="form-group">
+                                                <h:outputLabel for="location">Location<span class="star">*</span></h:outputLabel>
+                                                <h:inputText id="location" value="#{add_room.location}" required="true" requiredMessage="Please enter room's location" />
+                                                <h:message for="location" styleClass="error"/>
+                                            </div>    
+                                            <div class="form-group">
+                                                <h:outputLabel for="area">Room's Area<span class="star">*</span></h:outputLabel>
+                                                <h:inputText id="area" value="#{add_room.area}" required="true" requiredMessage="Please enter room's area" />
+                                                <h:message for="area" styleClass="error"/>
+                                            </div>  
+                                            <div class="form-group">
+                                                <h:outputLabel for="available_from">Available From<span class="star">*</span></h:outputLabel>
+                                                <h:inputText class="datepicker" id="available_from" value="#{add_room.available_from}" required="true" requiredMessage="Please enter available from date" >
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                                                </h:inputText>
+                                                <h:message for="available_from" styleClass="error"/>
+                                            </div>   
+                                            <div class="form-group">
+                                                <h:outputLabel for="available_till">Available Till<span class="star">*</span></h:outputLabel>
+                                                <h:inputText class="datepicker" id="available_till" value="#{add_room.available_till}" required="true" requiredMessage="Please enter available till date" >
+                                                    <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                                                </h:inputText>
+                                                <h:message for="available_till" styleClass="error"/>
+                                            </div>                                      
+                                            <div class="form-group">
+                                                <h:outputLabel for="price">Price per Day<span class="star">*</span></h:outputLabel>
+                                                <h:inputText id="price" value="#{add_room.price}" required="true" requiredMessage="Please enter room's price" />
+                                                <h:message for="price" styleClass="error"/>
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="people_number">Number of People<span class="star">*</span></h:outputLabel>
+                                                <h:inputText id="people_number" value="#{add_room.people_number}" required="true" requiredMessage="Please enter max number of people" />
+                                                <h:message for="people_number" styleClass="error"/>
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="plus_person_price">Plus Person Price</h:outputLabel>
+                                                <h:inputText id="plus_person_price" value="#{add_room.plus_person_price}"  />
+
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="arrival_time">Arrival Time</h:outputLabel>
+                                                <h:inputText id="arrival_time" value="#{add_room.arrival_time}"  > 
+                                                    <f:convertDateTime pattern="H:m"/> 
+                                                </h:inputText>
+
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="map_latitude">Map Latitude</h:outputLabel>
+                                                <h:inputText id="map_latitude" value="#{add_room.map_latitude}"  />
+
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="map_longitude">Map Longitude</h:outputLabel>
+                                                <h:inputText id="map_longitude" value="#{add_room.map_longitude}"  />
+
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="description">Room Title</h:outputLabel>
+                                                <h:inputText id="description" value="#{add_room.description}" />
+
+                                            </div> 
+
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="category">Roomtype category</h:outputLabel>
+
+                                                <h:selectOneMenu value="#{add_room.category}">
+                                                    <f:selectItem itemValue="1" itemLabel="Motel" />
+                                                    <f:selectItem itemValue="2" itemLabel="Room" />
+                                                    <f:selectItem itemValue="3" itemLabel="Appartment" />
+                                                    <f:selectItem itemValue="4" itemLabel="Studio" />
+                                                </h:selectOneMenu>
+                                            </div> 
+
+
+                                            <div class="form-group">
+                                                <h:outputLabel for="photo">Photo</h:outputLabel>
+                                                <h:inputText id="photo" value="#{add_room.photo}" required="true" requiredMessage="Please enter your photo URI" />
+                                                <h:message for="photo" styleClass="error"/><br/>
+                                            </div> 
+
+                                            <h2>Facilities</h2>
+                                            <div class="form-group">
+                                                Heating<br/>
+                                                <h:selectOneRadio value = "#{add_room.heating}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+                                            <div class="form-group">
+                                                Air Condition<br/>
+                                                <h:selectOneRadio value = "#{add_room.aircondition}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+                                            <div class="form-group">
+                                                Wifi<br/>
+                                                <h:selectOneRadio value = "#{add_room.wifi}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+                                            <div class="form-group">
+                                                Parking<br/>
+                                                <h:selectOneRadio value = "#{add_room.parking}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+                                            <div class="form-group">
+                                                Television<br/>
+                                                <h:selectOneRadio value = "#{add_room.tv}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+                                            <div class="form-group">
+                                                Oven<br/>
+                                                <h:selectOneRadio value = "#{add_room.oven}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+                                            <div class="form-group">
+                                                Elevator<br/>
+                                                <h:selectOneRadio value = "#{add_room.elevator}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>    
+                                            </div>
+
+                                            <h2>Rules<span class="star">*</span></h2>
+                                            <div class="form-group">
+                                                Pets<br/>
+                                                <h:selectOneRadio value = "#{add_room.pets}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>   
+                                            </div>
+                                            <div class="form-group">
+                                                Smoking<br/>
+                                                <h:selectOneRadio value = "#{add_room.smoking}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>   
+                                            </div>
+                                            <div class="form-group">
+                                                Events<br/>
+                                                <h:selectOneRadio value = "#{add_room.events}"> 
+                                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                                </h:selectOneRadio>   
+                                            </div>
+                                            <div class="form-group">
+                                                <h:outputLabel for="min_days">Minimum Days</h:outputLabel>
+                                                <h:inputText id="min_days" value="#{add_room.min_days}" />
+                                            </div> 
+
+                                            <h2>Spaces<span class="star">*</span></h2>
+                                            <div class="form-group">
+                                                <h:outputLabel for="bedroom">Number of Bedrooms</h:outputLabel>
+                                                <h:inputText id="bedroom" value="#{add_room.bedroom}" />
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="living_room">Number of Living Rooms</h:outputLabel>
+                                                <h:inputText id="living_room" value="#{add_room.living_room}" />
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="kitchen">Number of Kitchen</h:outputLabel>
+                                                <h:inputText id="kitchen" value="#{add_room.kitchen}" />
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="bathroom">Number of Bathrooms</h:outputLabel>
+                                                <h:inputText id="bathroom" value="#{add_room.bathroom}" />
+                                            </div> 
+                                            <h2>Beds<span class="star">*</span></h2>
+                                            <div class="form-group">
+                                                <h:outputLabel for="doubles">Number of double Beds</h:outputLabel>
+                                                <h:inputText id="doubles" value="#{add_room.doubles}" />
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="single">Number of single Beds</h:outputLabel>
+                                                <h:inputText id="single" value="#{add_room.single}" />
+                                            </div> 
+                                            <div class="form-group">
+                                                <h:outputLabel for="sofa">Number of Sofas</h:outputLabel>
+                                                <h:inputText id="sofa" value="#{add_room.sofa}" />
+                                            </div> 
+
+                                            <h:commandButton value="Add" class="big-link-1" action="#{add_room.addroom}" >
+                                                <f:param name="idroom" value="#{ add_room.idroom }" />
+                                            </h:commandButton>    
+                                        </h:form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </ui:define>
+                </ui:composition>
+
+            </h:body>
+        </html>
+
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+
+        <ui:composition template="template/layout.xhtml">
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_camera"></span>
+                                <h1>Rooms</h1><br/>
+                                <p>Pick a room to view details</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="portfolio-container">
+                    <div class="container">
+
+                        <div class="row">
+
+                            <h:form>
+                                <div style="margin-top: 0%">
+                                    <h:commandButton style="margin-top: 5%" class="big-link-1" value="previous page" rendered="#{portfolioController.page gt 0}" action="#{portfolioController.previousPage()}" />
+                                    <h:commandButton style="margin-top: 5%" class="big-link-1" value="next page" rendered="#{portfolioController.page lt portfolioController.maxpages}" action="#{portfolioController.nextPage()}" />
+                                </div>
+                                <div class="col-sm-12 portfolio-masonry">
+                                    <ui:repeat value="#{portfolioController.roomList}" var="room">
+                                        <div class="portfolio-box web-design" style="height: 260px; width: 305px; float: left;">
+                                            <div style="width: 100%; height: 108%;" class="portfolio-box-container">
+                                                <img style="width: 100%; height: 56%" src="#{room.photo}"/>
+                                                <div style="width: 50%; float: left">
+                                                    <h3 style="font-size: 100%; text-align: left; margin-left: 3%">#{room.description}</h3>
+                                                    <p style="text-align: left; margin-left: 4%">Area: #{room.area} m<sup>2</sup> <br/> #{room.price} €/day</p>
+                                                </div>
+                                                <div style="margin-top: 10%">
+                                                    <h:button  value="See Room" class = "big-link-1" outcome="/room_profile" >  
+                                                        <f:param name="idroom" value="#{ room.idroom }" />
+
+                                                    </h:button>
+                                                    <h:button rendered="#{sessionController.loggedInUser.username ne room.userList.get(0).username}" value="Contact Owner" class = "big-link-1" outcome="/messages/compose" >  
+                                                        <f:param name="idroom" value="#{ room.idroom }" />
+
+                                                    </h:button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ui:repeat>		                
+                                </div> 
+                                <h:commandButton style="margin-top: 5%" class="big-link-1" value="previous page" rendered="#{portfolioController.page gt 0}" action="#{portfolioController.previousPage()}" />
+                                <h:commandButton style="margin-top: 5%" class="big-link-1" value="next page" rendered="#{portfolioController.page lt portfolioController.maxpages}" action="#{portfolioController.nextPage()}" />
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

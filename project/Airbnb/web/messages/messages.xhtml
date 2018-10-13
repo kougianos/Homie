@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-2 col-sm-offset-1 page-title wow fadeIn">
+                                <span  aria-hidden="true" class="icon_mail"></span>
+                                <h3>Messages</h3> 
+                            </div>
+                     </div>
+                    </div>
+                </div>
+                <br/>
+                <p style="margin-left: -33%">You can send a message by contacting the owner from the room page you are interested in.</p>
+                       
+                <div class="contact-us-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-7 contact-form wow fadeInLeft">
+                                <h:form style="margin-bottom: 0em; ">
+                                    <h:link class="InboxOutbox" value="Inbox" outcome="/messages/inbox"/><br/>  
+                                    <h:link class="InboxOutbox" value="Outbox" outcome="/messages/outbox"/><br/>   <br/>                           
+<!--                                    <h:button value="Compose"  class="big-link-1" outcome="/messages/compose"  />-->
+                                </h:form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

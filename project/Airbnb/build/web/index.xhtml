@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Slider -->
+                <div class="services-container" style="margin-bottom: 200px; margin-top: 80px">
+                    <div class="container" style="width: 100; margin-left: 207px; margin-top: -50px;">
+                        <p class="MakeSearch"> Please make a search </p>
+                        <div class="search">
+
+                            <div class="row" >
+                                <div  class="col-md-10 col-md-offset-1">
+                                    <div style="background-color: #f7f7f7" class="form-section">
+                                        <div class="row">
+                                            <h:form  role="form">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <h:inputText  class="form-control" id="location" a:placeholder="Where?" value="#{searchController.location}" required="true" requiredMessage="Please enter a location"/>
+                                                        <h:message for="location" styleClass="error"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="checkin">Check in</label>
+                                                        <div class="input-group">
+                                                            <h:inputText class="form-control datepicker" id="checkin" a:placeholder="Checkin date" value="#{searchController.checkin}" required="true" requiredMessage="Please enter a checkin date">                                                            
+                                                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                            </h:inputText>
+                                                        </div>
+                                                        <h:message for="checkin" styleClass="error"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <h:inputText  class="form-control datepicker" id="checkout" a:placeholder="Checkout date" value="#{searchController.checkout}" required="true" requiredMessage="Please enter a checkout date">
+                                                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                                            </h:inputText>
+                                                        </div>
+                                                        <h:message for="checkout" styleClass="error"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="sr-only" for="guest">Guest</label>
+
+                                                        <h:selectOneMenu style="background-color: #f7f7f7" id="guest"  class="form-control" value="#{searchController.numberofguests}" converter="javax.faces.Integer"> 
+                                                            <f:selectItem itemValue="-1" itemLabel = "Any" /> 
+                                                            <f:selectItem itemValue="2" itemLabel = "2 Guests" /> 
+                                                            <f:selectItem itemValue="3" itemLabel = "3 Guests" /> 
+                                                            <f:selectItem itemValue="4" itemLabel = "4 Guests" /> 
+                                                            <f:selectItem itemValue="5" itemLabel = "5 Guests" /> 
+                                                            <f:selectItem itemValue="6" itemLabel = "6 Guests" /> 
+                                                            <f:selectItem itemValue="7" itemLabel = "7 Guests" /> 
+                                                            <f:selectItem itemValue="8" itemLabel = "8 Guests" /> 
+                                                            <f:selectItem itemValue="9" itemLabel = "9 Guests" /> 
+                                                            <f:selectItem itemValue="10" itemLabel = "10 Guests" /> 
+                                                        </h:selectOneMenu> 	
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <h:commandButton style="background-color: orangered" class="btn btn-default btn-primary" action="#{searchController.search()}" value="Search" />
+                                                </div>
+                                            </h:form>
+                                        </div>
+                                    </div>
+                                    <h:link class="AdvancedSearch" value="Advanced Search" outcome="/advanced_search" >  
+                                    </h:link> 
+                                    <div  style="margin-top: 40px; font-size: large; color: orangered;"><h:outputLabel style="font-weight: normal;" rendered="#{searchController.isEmpty}">We are sorry, no results match your criteria</h:outputLabel></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+
+
+
+
+                <!-- Latest work -->               
+                <div class="work-container" style="margin-top: -100px">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 work-title wow fadeIn">                                
+                                <h2><h:outputText rendered="#{not empty searchController.roomList}" value="Our rooms" /></h2>
+                                <!--<h4><h:outputText rendered="#{empty searchController.roomList}" value="Please make a search" /></h4>-->
+                            </div>
+
+                            <div class="row" style="margin-bottom: 7%; margin-top: -7%">
+                                <div class="col-sm-12 portfolio-masonry">
+                                    <ui:repeat  value="#{searchController.roomList}" var="room">
+                                        <div class="portfolio-box web-design" style="height: 260px; width: 305px; float: left;">
+                                            <div style="width: 100%; height: 108%;" class="portfolio-box-container">
+                                                <img style="width: 100%; height: 56%" src="#{room.photo}"/>
+                                                <div style="width: 50%; float: left">
+                                                    <h3 style="font-size: 100%; text-align: left; margin-left: 3%">#{room.description}</h3>
+                                                    <p style="text-align: left; margin-left: 4%">Area: #{room.area} m<sup>2</sup> <br/> #{room.price} €/day</p>
+                                                </div>
+                                                <div style="margin-top: 10%">
+                                                    <h:button  value="See Room" class = "big-link-1" outcome="/room_profile" >  
+                                                        <f:param name="idroom" value="#{ room.idroom }" />
+                                                        <!--<f:param name="idroom" value="#{room.idroom}" />-->
+                                                    </h:button>
+                                                    <h:button rendered="#{sessionController.loggedInUser.username ne room.userList.get(0).username}" value="Contact Owner" class = "big-link-1" outcome="/messages/compose" >  
+                                                        <f:param name="idroom" value="#{ room.idroom }" />
+                                                        <!--<f:param name="idroom" value="#{room.idroom}" />-->
+                                                    </h:button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ui:repeat>		                
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </ui:define>
+        </ui:composition>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_profile"></span>
+                                <h1>Register</h1> <br></br>
+                                <p>Register today to gain a lot of benefits!!!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="contact-us-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-7 contact-form wow fadeInLeft">
+                                <h:form>
+                                    <p><h:messages globalOnly="true" styleClass="error"/> </p>
+                                    <div class="form-group">
+                                        <h:outputLabel for="username">Username<span class="star">*</span></h:outputLabel>
+                                        <h:inputText id="username" value="#{registerUser.username}" required="true" requiredMessage="Please enter your username" />
+                                        <h:message for="username" styleClass="error"/>
+                                    </div>    
+                                    <div class="form-group">
+                                        <h:outputLabel for="password">Password<span class="star">*</span></h:outputLabel>
+                                        <h:inputSecret id="password" value="#{registerUser.password}" required="true" requiredMessage="Please enter your password" />
+                                        <h:message for="password" styleClass="error"/>
+                                    </div>  
+                                     <div class="form-group">
+                                        <h:outputLabel for="passwordConfirm">Confirm Password<span class="star">*</span></h:outputLabel>
+                                        <h:inputSecret id="passwordConfirm" value="#{registerUser.passwordConfirm}" required="true" requiredMessage="Please confirm your password" />
+                                        <h:message for="passwordConfirm" styleClass="error"/>
+                                    </div>  
+                                    <div class="form-group">
+                                        <h:outputLabel for="name">Name<span class="star">*</span></h:outputLabel>
+                                        <h:inputText id="name" value="#{registerUser.name}" required="true" requiredMessage="Please enter your password" />
+                                        <h:message for="name" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="surname">Surname<span class="star">*</span></h:outputLabel>
+                                        <h:inputText id="surname" value="#{registerUser.surname}" required="true" requiredMessage="Please enter your password" />
+                                        <h:message for="surname" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="email">e-mail<span class="star">*</span></h:outputLabel>
+                                        <h:inputText id="email" value="#{registerUser.email}" required="true" requiredMessage="Please enter your e-mail address" />
+                                        <h:message for="email" styleClass="error"/>
+                                    </div>   
+                                    <div class="form-group">
+                                        <h:outputLabel for="phone">Phone<span class="star">*</span></h:outputLabel>
+                                        <h:inputText id="phone" value="#{registerUser.phone}" required="true" requiredMessage="Please enter your phone number" />
+                                        <h:message for="phone" styleClass="error"/>
+                                    </div>                                      
+                                    <div class="form-group">
+                                        <h:outputLabel for="role">Select your role</h:outputLabel><br/>
+                                        <h:selectOneMenu id="role" value="#{registerUser.role}" >
+                                            <f:selectItem itemValue="visitor" itemLabel="I want to be a visitor" />
+                                            <f:selectItem itemValue="renter" itemLabel="I want to be a renter too" />
+                                        </h:selectOneMenu>
+                                        <h:message for="role" styleClass="error"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:outputLabel for="photo">Photo<span class="star">*</span></h:outputLabel>
+                                        <h:inputText id="photo" value="#{registerUser.photo}" required="true" requiredMessage="Please enter your photo URL" />
+                                        <h:message for="photo" styleClass="error"/>
+                                    </div> 
+
+                                    <h:commandButton  id="registerUser"  value="Register" class="big-link-1" action="#{registerUser.register}" />
+                                </h:form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

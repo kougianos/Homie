@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_tools"></span>
+                                <h1>Administration Services</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Full Width Text -->
+                <div class="services-full-width-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 services-full-width-text wow fadeInLeft">
+                                <h3>Administration access</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div style="margin-bottom: 60px" class="services-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="service wow fadeInUp">
+                                    <div class="service-icon"><span aria-hidden="true" class="icon_profile"></span></div>
+                                    <h3>Users</h3>
+                                    <p>You may view active and inactive users and change their account statuses</p>
+                                    <h:link class="big-link-1" value="users" outcome="see_users" />
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-sm-3">
+                                <div class="service wow fadeInDown">
+                                    <div class="service-icon"><span aria-hidden="true" class="icon_printer-alt"></span></div>
+                                    <h3>Export</h3>
+                                    <p>You may export complete dataset to XML and download it to your hard drive </p>
+                                    <h:link class="big-link-1" value="export" outcome="export" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Half Width Text -->
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

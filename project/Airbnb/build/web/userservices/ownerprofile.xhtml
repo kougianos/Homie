@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_profile"></span> <br/>
+                                <h1>#{profileManagementController.user.username}'s profile</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="contact-us-container">
+                    <div class="container">
+
+                        <div class="col-sm-7 contact-form wow fadeInLeft">
+                            <div class="portfolio-box web-design" style="width: 340px; margin-left: -13px; margin-top: -10px;">
+
+                                <img src="#{profileManagementController.user.photo}" alt=""/>
+                            </div>
+
+                            <div class="row">
+                                <h:form style="margin-bottom: -60px;">
+                                    <div class="form-group">
+                                        <h:outputLabel for="rating">Average Rating (calculated from ratings this user gave to his rented rooms)</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="rating" value="#{profileManagementController.userRating}" /></span>
+                               
+                                    </div>  
+                                    <div class="form-group">
+                                        <h:outputLabel for="avgrating">User Rating</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="avgrating" value="#{profileManagementController.avgUserRating}"> <f:convertNumber maxFractionDigits="1"/></h:outputText></span>
+                               
+                                    </div>  
+                                    <div class="form-group">
+                                        <h:outputLabel for="username">Username</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="username" value="#{profileManagementController.user.username}" /></span>
+                                        
+                                    </div>    
+
+                                    <div class="form-group">
+                                        <h:outputLabel for="name">Name</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="name" value="#{profileManagementController.user.name}"  /></span>
+                                     
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="surname">Surname</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="surname" value="#{profileManagementController.user.surname}" /></span>
+                                        
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="email">e-mail</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="email" value="#{profileManagementController.user.email}" /></span>
+                                       
+                                    </div>   
+                                    <div class="form-group">
+                                        <h:outputLabel for="phone">Phone</h:outputLabel><br/>
+                                        <span class="text"><h:outputText id="phone" value="#{profileManagementController.user.phone}"  /></span>
+                                       
+                                    </div>                        
+                                    
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

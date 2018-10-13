@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_profile"></span>
+                                <h1>Users</h1><br/>
+                                <p>See active and inactive users</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h:form>
+
+                        <h:commandLink style="font-size: 24px; margin-right: 10px" action="#{ userManagementController.all() }" >ALL </h:commandLink>
+
+                        <h:commandLink style="font-size: 24px; margin-right: 10px" action="#{ userManagementController.active() }" >ACTIVE </h:commandLink>
+
+                        <h:commandLink style="font-size: 24px; margin-right: 10px" action="#{ userManagementController.inactive() }" >INACTIVE </h:commandLink>
+
+                    </h:form>	
+
+                </div>
+
+                <div class="contact-us-container">
+                    <div class="container">
+                        <h:form style="margin-bottom: -50px">
+                            <h:dataTable value="#{ userManagementController.userList }" var="obj" styleClass="order-table"
+                                             headerClass="order-table-header"
+                                             rowClasses="order-table-odd-row,order-table-even-row" >            
+                                <h:column>    				
+                                    <f:facet name = "header">Username</f:facet>    				
+                                        #{obj.username}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name = "header">Name</f:facet>
+                                        #{obj.name}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name = "header">Surname</f:facet>
+                                        #{obj.surname}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name = "header">E-mail</f:facet>
+                                        #{obj.email}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name = "header">Phone</f:facet>
+                                        #{obj.phone}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name = "header">Active</f:facet>
+                                        #{obj.active}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name = "header">Manage</f:facet>
+                                    <h:link value="view" outcome="/adminservices/profile" >        
+                                        <f:param name="username" value="#{ obj.username }" />
+                                    </h:link>
+
+                                </h:column>
+                            </h:dataTable>
+                            <h:button style="margin-left: -2px; margin-top: 10px" outcome="/adminservices/services" value="Back" class="logout_button" />
+                        </h:form>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_house"></span> <br/>
+                                <h1>This is a room you have rented</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h:form>
+                    <div class="contact-us-container">
+                        <div class="container">
+                            <div class="row">
+                                <div>
+                                    <h:messages globalOnly="true" styleClass="error"/>
+                                    <div>
+                                        <h3 style="font-size: 150%; margin-bottom: 3%; ">#{rentedroom.room.description}</h3> 
+                                    </div>
+                                    <div style="width: 50%">
+                                        <img src="#{rentedroom.room.photo}"/>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4>You rented this room from:</h4>
+                                    <h:outputText value="#{rentedroom.urroom.rentFrom}">  <f:convertDateTime pattern="yyyy/MM/dd"/>  </h:outputText>
+                                    <h4>To:</h4>
+                                    <h:outputText value="#{rentedroom.urroom.rentTo}"># <f:convertDateTime pattern="yyyy/MM/dd"/>  </h:outputText>
+                                </div>
+                                <div>
+                                    <h3>Rate now</h3>
+                            <!--<ul class="rate-area" value="#{rentedroom.rating}">-->
+                                    <span class="rating">
+                                        <h:selectOneRadio class="rate-area" value="#{rentedroom.rating}">
+                                            <f:selectItem itemValue="1"  itemLabel="Bad" />
+                                            <f:selectItem itemValue="2"  itemLabel="Not Good " />
+                                            <f:selectItem itemValue="3"  itemLabel="Average " />
+                                            <f:selectItem itemValue="4" itemLabel="Good"/>
+                                            <f:selectItem itemValue="5"  itemLabel="Amazing!" />
+
+                                        </h:selectOneRadio>
+                                        <br/>
+                                        <h:commandButton  style="margin-left: -29%; margin-top: 1%" value="Save rating" class="big-link-1" action="#{rentedroom.saverating}" />
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        
+                        <div style="margin-left: 15.67%">
+                            <h:button class="big-link-1" value="Back to list" outcome="/userservices/myrentedrooms"/>
+                            <h:button class="big-link-1" value="See Room" outcome="/room_profile"> 
+                                <f:param name="idroom" value="#{ rentedroom.room.idroom }" />
+                            </h:button>
+                        </div>
+                    </div>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

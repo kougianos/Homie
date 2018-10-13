@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_house"></span>
+                                <h1>Edit Room's Profile</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h:form>
+
+                    <div class="row" style="margin-left: 250px;">
+                        <div class="portfolio-box-text" style="width: 20%">
+                            <h3 style="font-size: 150%; margin-bottom: 3%; margin-left: 0%">#{roomProfileController.room.description}</h3>
+                        </div>
+                        <div class="portfolio-box web-design" style="width: 100%; height: 37em">
+                            <div class="portfolio-box-container" style="width: 50%; height: 93%; background-color: transparent">
+                                <div class="portfolio-box web-design" style="width: 95%;">
+                                    <img  src="#{roomProfileController.room.photo}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" contact-form" style="float: left; width: 350px">
+                            <h2>General Description</h2>
+                            <div class="form-group">
+                                <h:outputLabel for="location">Location</h:outputLabel><br/>
+                                <h:inputText id="location" value="#{roomProfileController.room.location}" required="true" requiredMessage="Please enter room's location" />
+                                <h:message for="location" styleClass="error"/>
+                            </div>    
+                            <div class="form-group">
+                                <h:outputLabel for="area">Room's Area</h:outputLabel>
+                                <h:inputText id="area" value="#{roomProfileController.room.area}" required="true" requiredMessage="Please enter room's area" />
+                                <h:message for="area" styleClass="error"/>
+                            </div>  
+                            <div class="form-group">
+                                <h:outputLabel for="available_from">Available From</h:outputLabel>
+                                <h:inputText id="available_from" value="#{roomProfileController.room.availableFrom}" required="true" requiredMessage="Please enter available from date" >
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                                </h:inputText>
+                                <h:message for="available_from" styleClass="error"/>
+                            </div>   
+                            <div class="form-group">
+                                <h:outputLabel for="available_till">Available Till</h:outputLabel>
+                                <h:inputText id="available_till" value="#{roomProfileController.room.availableTill}" required="true" requiredMessage="Please enter available to date">
+                                    <f:convertDateTime pattern="yyyy-MM-dd"/> 
+                                </h:inputText>
+                                <h:message for="available_till" styleClass="error"/>
+                            </div>                                      
+                            <div class="form-group">
+                                <h:outputLabel for="price">Price per Day</h:outputLabel>
+                                <h:inputText id="price" value="#{roomProfileController.room.price}" required="true" requiredMessage="Please enter room's price" />
+                                <h:message for="price" styleClass="error"/>
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="people_number">Number of People</h:outputLabel>
+                                <h:inputText id="people_number" value="#{roomProfileController.room.peopleNumber}" required="true" requiredMessage="Please enter max number of people" />
+                                <h:message for="people_number" styleClass="error"/>
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="plus_person_price">Plus Person Price</h:outputLabel>
+                                <h:inputText id="plus_person_price" value="#{roomProfileController.room.plusPersonPrice}"  />
+
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="arrival_time">Arrival Time</h:outputLabel>
+                                <h:inputText id="arrival_time" value="#{roomProfileController.room.arrivalTime}">
+                                    <f:convertDateTime pattern="H:m"/> 
+                                </h:inputText>
+
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="map_latitude">Map Latitude</h:outputLabel>
+                                <h:inputText id="map_latitude" value="#{roomProfileController.room.mapLatitude}"  />
+
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="map_longitude">Map Longitude</h:outputLabel>
+                                <h:inputText id="map_longitude" value="#{roomProfileController.room.mapLongitude}"  />
+
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="description">Room Title</h:outputLabel>
+                                <h:inputText id="description" value="#{roomProfileController.room.description}" />
+
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="category" >Roomtype category</h:outputLabel>
+
+                                <h:selectOneMenu style="margin-left: 15px;" value="#{roomProfileController.room.idroomtype.category}">
+                                    <f:selectItem itemValue="1" itemLabel="Motel" />
+                                    <f:selectItem itemValue="2" itemLabel="Room" />
+                                    <f:selectItem itemValue="3" itemLabel="Appartment" />
+                                    <f:selectItem itemValue="4" itemLabel="Studio" />
+                                </h:selectOneMenu>
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="photo">Photo url</h:outputLabel>
+                                <h:inputText id="photo" value="#{roomProfileController.room.photo}" />
+
+                            </div>
+                        </div>
+                        <div class=" contact-form" style="float: left; margin-left: 80px;">
+                            <h2>Facilities</h2>
+                            <div class="form-group" style="text-align: left; margin-top: 28px;">
+                                Heating<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.heating}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Air Condition<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.airCondition}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Wifi<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.wifi}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Parking<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.parking}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Television<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.tv}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Oven<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.oven}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Elevator<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.facility.elevator}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>    
+                            </div>
+                            <h2>Rules</h2>
+                            <div class="form-group" style="text-align: left">
+                                Pets<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.rule.pets}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>   
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Smoking<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.rule.smoking}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>   
+                            </div>
+                            <div class="form-group" style="text-align: left">
+                                Events<br/>
+                                <h:selectOneRadio value = "#{roomProfileController.rule.events}"> 
+                                    <f:selectItem itemValue = "true" itemLabel = "true" /> 
+                                    <f:selectItem itemValue = "false" itemLabel = "false" />
+                                </h:selectOneRadio>   
+                            </div>
+                            <div class="form-group">
+                                <h2> Minimum Days </h2>
+                                <h:inputText id="min_days" value="#{roomProfileController.rule.minDays}" />
+                            </div> 
+
+                        </div>
+                        <div class="contact-form" style="float: left; margin-left: 80px;">
+                            <h2>Spaces</h2>
+                            <div class="form-group" style="margin-top: 18px">
+                                <h:outputLabel for="bedroom">Number of Bedrooms</h:outputLabel>
+                                <h:inputText id="bedroom" value="#{roomProfileController.space.bedroom}" />
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="living_room">Number of Living Rooms</h:outputLabel>
+                                <h:inputText id="living_room" value="#{roomProfileController.space.livingRoom}" />
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="kitchen">Number of Kitchen</h:outputLabel>
+                                <h:inputText id="kitchen" value="#{roomProfileController.space.kitchen}" />
+                            </div> 
+                            <div class="form-group">
+                                <h:outputLabel for="bathroom">Number of Bathrooms</h:outputLabel>
+                                <h:inputText id="bathroom" value="#{roomProfileController.space.bathroom}" />
+                            </div> 
+                            <h2>Beds</h2>
+                            <ui:repeat value="#{roomProfileController.bedList}" var="bed">
+                                <h:outputText id="type" value="#{bed.type}" />
+                                <div class="form-group">
+                                    <h:inputText id="number" value="#{bed.number}" />
+                                    <br/>
+                                </div>
+                            </ui:repeat>
+                        </div>
+
+                    </div>
+                    <div style="margin-left: 5%">
+                        <h:commandButton style="margin-left: -79em;" value="Save" class="big-link-1" action="#{roomProfileController.save}" />
+                        <h:button class="big-link-1" value="Back" outcome="/room_profile" >
+                            <f:param name="idroom" value="#{ roomProfileController.room.idroom }" />
+
+                        </h:button>
+                    </div>
+                </h:form>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

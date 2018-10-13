@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+
+        <ui:composition template="/template/layout.xhtml">
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_camera"></span>
+                                <h1>My Rooms</h1><br/>
+                                <p>These are your rooms. Pick a room to view details</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio -->
+                <div class="portfolio-container">
+                    <div class="container">
+
+                        <div class="row" style="margin-bottom: 7%; margin-top: -7%">
+                            <div class="col-sm-12 portfolio-masonry">
+                                <ui:repeat value="#{roomManagementController.roomList}" var="room">
+                                    <div class="portfolio-box web-design" style="height: 260px; width: 305px; float: left;">
+                                        <div style="width: 100%; height: 108%;" class="portfolio-box-container">
+                                            <img style="width: 100%; height: 56%" src="#{room.photo}"/>
+                                            <div style="width: 50%; float: left">
+                                                <h3 style="font-size: 100%; text-align: left; margin-left: 3%">#{room.description}</h3>
+                                                <p style="text-align: left; margin-left: 4%">Area: #{room.area} m<sup>2</sup> <br/> #{room.price} €/day</p>
+                                            </div>
+                                            <div style="margin-top: 10%">
+                                                <h:button  value="See Room" class = "big-link-1" outcome="/renterservices/roomprofilerenter" >  
+                                                    <f:param name="idroom" value="#{ room.idroom }" />
+                                                   
+                                                </h:button>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:repeat>		                
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

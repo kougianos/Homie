@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_house"></span>
+                                <h1>Room's Profile</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h:form>
+                    <div class="contact-us-container">
+                        <div class="container">
+                            <div class="row"/>
+                            <div>
+                                <div>
+                                    <h3 style="font-size: 150%; margin-bottom: 3%; margin-left: 0%">#{roomProfileController.room.description}</h3> 
+                                </div>
+                                <div style="width: 50%">
+                                    <img src="#{roomProfileController.room.photo}"/>
+                                </div>
+                            </div>
+
+                            <div class="portfolio-box web-design" style="float: left;">
+                                <h3>Rating</h3>
+                                <div class="form-group">
+                                    <h:outputLabel for="rating">Rating</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="rating" value="#{roomProfileController.rating}"> <f:convertNumber maxFractionDigits="1"/> </h:outputText>/5 </span> 
+
+                                </div> 
+                                <div class="form-group">
+                                    <h:outputLabel for="rate_number">Number of ratings</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="rate_number" value="#{roomProfileController.rates_number}" /></span>
+
+                                </div> 
+                                <h3>General Information</h3>
+                                <div class="form-group">
+                                    <h:outputLabel for="owner">Owner</h:outputLabel><br/>
+                                    <img src="#{roomProfileController.room.userList.get(0).photo}" style="width: 7em"/> <br/>
+                                    <span style="font-size: 2em" class="text"><h:link value="#{roomProfileController.room.userList.get(0).username}" outcome="userservices/ownerprofile" > 
+                                            <f:param name="username" value="#{ roomProfileController.room.userList.get(0).username }" />
+                                        </h:link>
+                                    </span>
+                                </div>    
+                                <div class="form-group">
+                                    <h:outputLabel for="location">Location</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="location" value="#{roomProfileController.room.location}" /></span>
+
+                                </div>    
+                                <div class="form-group">
+                                    <h:outputLabel for="available_from">Available from</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="available_from" value="#{roomProfileController.room.availableFrom}"/></span>
+
+                                </div>  
+                                <div class="form-group">
+                                    <h:outputLabel for="available_till">Available till</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="available_till" value="#{roomProfileController.room.availableTill}"  /></span>
+
+                                </div> 
+                                <div class="form-group">
+                                    <h:outputLabel for="price">Price</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="price" value="#{roomProfileController.room.price}" /> €/day </span>
+
+                                </div> 
+                                <div class="form-group">
+                                    <h:outputLabel for="area">Area</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="area" value="#{roomProfileController.room.area}" /> m<sup>2</sup></span>
+
+                                </div>   
+                                <div class="form-group">
+                                    <h:outputLabel for="people_number">People number</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="people_number" value="#{roomProfileController.room.peopleNumber}"  /></span>
+
+                                </div> 
+
+                                <div class="form-group">
+                                    <h:outputLabel for="plus_person_price">Plus Person Price</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="plus_person_price" value="#{roomProfileController.room.plusPersonPrice}" /> €</span>
+                                </div> 
+
+                                <div class="form-group">
+                                    <h:outputLabel for="arrival_time">Arrival Time</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="arrival_time" value="#{roomProfileController.room.arrivalTime}" /></span>
+                                </div> 
+
+                                <div class="form-group">
+                                    <h:outputLabel for="roomtype">Room Type</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="roomtype" value="#{roomProfileController.room.idroomtype.category}" /></span>
+                                </div> 
+
+
+                                <div class="form-group">
+                                    <h:outputLabel for="description">Room Title</h:outputLabel><br/>
+                                    <span class="text"><h:outputText id="description" value="#{roomProfileController.room.description}" /></span>
+                                </div> 
+
+
+                            </div>
+
+                            <div class="yolo">
+                                <h3>Spaces</h3>
+                                <div class="form-group">
+
+                                    <h:outputLabel for="bedrooms">Bedrooms</h:outputLabel>
+                                    <span class="text"><h:outputText id="bedrooms" value="#{roomProfileController.space.bedroom}" /></span><br/>
+                                    <h:outputLabel for="kitchen">Kitchen</h:outputLabel>
+                                    <span class="text"><h:outputText id="kitchen" value="#{roomProfileController.space.kitchen}" /></span><br/>
+                                    <h:outputLabel for="livingroom">Living Room</h:outputLabel>
+                                    <span class="text"><h:outputText id="livingroom" value="#{roomProfileController.space.livingRoom}" /></span><br/>
+                                    <h:outputLabel for="bathroom">Bathroom</h:outputLabel>
+                                    <span class="text"><h:outputText id="bathroom" value="#{roomProfileController.space.bathroom}" /></span>
+                                </div>
+                                <h3>Beds</h3>
+                                <ui:repeat value="#{roomProfileController.bedList}" var="bed">
+                                    <h:outputText id="type" value="#{bed.type}" />
+                                    <span class="text"><h:outputText id="number" value="#{bed.number}" /></span>
+                                    <br/>
+                                </ui:repeat>
+                                <h3>Rules</h3>
+                                <div class="form-group">
+                                    <h:outputLabel for="pets">Pets</h:outputLabel>
+                                    <span class="text"><h:outputText id="pets" value="#{roomProfileController.rule.pets}" /></span><br/>
+                                    <h:outputLabel for="smoking">Smoking</h:outputLabel>
+                                    <span class="text"><h:outputText id="smoking" value="#{roomProfileController.rule.smoking}" /></span><br/>
+                                    <h:outputLabel for="events">Events</h:outputLabel>
+                                    <span class="text"><h:outputText id="events" value="#{roomProfileController.rule.events}" /></span><br/>
+                                    <h:outputLabel for="mindays">Minimum Days</h:outputLabel>
+                                    <span class="text"><h:outputText id="mindays" value="#{roomProfileController.rule.minDays}" /></span>
+                                </div> 
+
+                                <h3>Facilities</h3>
+                                <div class="form-group">
+                                    <h:outputLabel for="aircondition">Air Condition</h:outputLabel>
+                                    <span class="text"><h:outputText id="aircondition" value="#{roomProfileController.facility.airCondition}" /></span><br/>
+                                    <h:outputLabel for="heating">Heating</h:outputLabel>
+                                    <span class="text"><h:outputText id="heating" value="#{roomProfileController.facility.heating}" /></span><br/>
+                                    <h:outputLabel for="wifi">WIFI</h:outputLabel>
+                                    <span class="text"><h:outputText id="wifi" value="#{roomProfileController.facility.wifi}" /></span><br/>
+                                    <h:outputLabel for="tv">Tv</h:outputLabel>
+                                    <span class="text"><h:outputText id="tv" value="#{roomProfileController.facility.tv}" /></span><br/>
+                                    <h:outputLabel for="elevator">Elevator</h:outputLabel>
+                                    <span class="text"><h:outputText id="elevator" value="#{roomProfileController.facility.elevator}" /></span><br/>
+                                    <h:outputLabel for="parking">Parking</h:outputLabel>
+                                    <span class="text"><h:outputText id="parking" value="#{roomProfileController.facility.parking}" /></span><br/>
+                                    <h:outputLabel for="oven">Oven</h:outputLabel>
+                                    <span class="text"><h:outputText id="oven" value="#{roomProfileController.facility.oven}" /></span>                            
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-5 contact-address wow fadeInUp" style="margin-left: 43%; margin-top: -57.5%">
+                                <h3>Google Maps Location</h3>
+                                <div id="map" class="map" style="width:100%">
+
+                                </div>
+                                <h3>Address</h3>
+                                <p>Latitude: #{roomProfileController.room.mapLatitude}</p>
+                                <p>Longitude: #{roomProfileController.room.mapLongitude}</p>
+                            </div>
+
+                        </div>
+                        <div class="row" style="margin-left: 16%; margin-bottom: -30px;">
+                            <h:link class="big-link-1" value="Rent it!" outcome="/rentroom" rendered="#{not (roomProfileController.room.userList.get(0).username eq sessionController.loggedInUser.username)}">
+                                <f:param name="idroom" value="#{ roomProfileController.room.idroom }" />
+                            </h:link>
+
+
+                            <h:link style="margin-left: 0.5%" class="big-link-1" value="Contact owner" outcome="/messages/compose" rendered="#{not (roomProfileController.room.userList.get(0).username eq sessionController.loggedInUser.username)}">
+                                <f:param name="idroom" value="#{ roomProfileController.room.idroom }" />
+                            </h:link>
+
+                            <h:link class="big-link-1" value="Edit" outcome="/userservices/edit_room_profile" rendered="#{roomProfileController.room.userList.get(0).username eq sessionController.loggedInUser.username}">
+                                <f:param name="idroom" value="#{ roomProfileController.room.idroom }" />
+
+                            </h:link>
+
+                            <h:link style="margin-left: 0.3%" class="big-link-1" value="Back to portfolio" outcome="/portfolio"/>
+
+                        </div>
+                    </div>
+
+                </h:form>
+
+
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJsf7ynFH30cKOLk1BsuOAAt5BwHfSAPI"></script>
+
+                <script>
+                    var map;
+                    function initMap() {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: {lat: #{roomProfileController.room.mapLatitude}, lng: #{roomProfileController.room.mapLongitude}},
+                            zoom: 15
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: {lat: #{roomProfileController.room.mapLatitude}, lng: #{roomProfileController.room.mapLongitude}},
+                            map: map,
+                            title: 'Hello World!'
+                        });
+
+                    }
+
+                    initMap();
+                </script>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

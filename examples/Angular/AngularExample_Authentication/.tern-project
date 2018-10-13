@@ -1,0 +1,41 @@
+{
+  "ecmaVersion": 5,
+  "ide": {
+    "scriptPaths": [
+      {
+        "type": "FILE",
+        "path": "WebContent/angular.min.js"
+      },
+      {
+        "type": "FILE",
+        "path": "WebContent/angular-resource.js"
+      },
+      {
+        "type": "FILE",
+        "path": "WebContent/app.js"
+      },
+      {
+        "type": "FILE",
+        "path": "WebContent/jquery-2.2.3.min.js"
+      },
+      {
+        "type": "FILE",
+        "path": "WebContent/userapp.js"
+      }
+    ]
+  },
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "angular1": {
+      
+    }
+  },
+  "libs": [
+    "browser"
+  ]
+}

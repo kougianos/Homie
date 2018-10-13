@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app="userapp">
+	<head>
+		<script src="./angular.min.js"></script>
+		<script src="./angular-resource.js"></script>
+		<script src="./userapp.js"></script>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+	<div ng-controller="UserCtrl">
+		<form ng-submit="insertUser()">   <!-- used ngSubmit here -->
+			<label for="username">Username:</label>
+			<input id="username" type="text" ng-model="newuser.username"/> <br>
+			<label for="firstName">First Name:</label>
+			<input id="firstName" type="text" ng-model="newuser.firstName"/><br>
+			<label for="lastName">Last Name:</label>
+			<input id="lastName" type="text" ng-model="newuser.lastName"/><br>
+			<label for="password">Password:</label>
+			<input id="password" type="text" ng-model="newuser.password"/><br>
+			<input type="submit" value="save"/>
+		</form>
+		
+		<table>
+			<tr> <th> Id </th> <th> Username </th> <th> First Name </th> <th> Last Name </th> </tr>
+			<tr ng-repeat="user in users">
+				<td>{{user.id}} </td> <td>{{user.username}}</td> 
+				<td> {{user.firstName}}</td><td>{{user.lastName}}</td>
+				
+			</tr>
+		</table>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <!-- Page Title -->
+                <div class="page-title-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1 page-title wow fadeIn">
+                                <span aria-hidden="true" class="icon_profile"></span>
+                                <h1>Edit your profile</h1> <br></br>
+                                <p>Please be sure to enter valid data because we may have to contact you for your account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <div class="contact-us-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-7 contact-form wow fadeInLeft">
+                                <h:form>
+                                    <p><h:messages globalOnly="true" styleClass="error"/> </p>
+                                    
+                                    <div class="form-group">
+                                        <h:outputLabel for="username">Username (cannot be changed)</h:outputLabel> <br></br>
+                                        <h:outputText id="username" value="#{sessionController.loggedInUser.username}" />
+                                        <h:message for="username" styleClass="error"/>
+                                    </div>
+                                     <h:outputLabel for="password">Password</h:outputLabel> 
+                                        <p>Change your password <h:link value="here" outcome="/userservices/change_password" /> </p>
+
+                                    <div class="form-group">
+                                        <h:outputLabel for="name">Name</h:outputLabel>
+                                        <h:inputText id="name" value="#{sessionController.loggedInUser.name}" required="true" requiredMessage="Please enter your password" />
+                                        <h:message for="name" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="surname">Surname</h:outputLabel>
+                                        <h:inputText id="surname" value="#{sessionController.loggedInUser.surname}" required="true" requiredMessage="Please enter your password" />
+                                        <h:message for="surname" styleClass="error"/>
+                                    </div> 
+                                    <div class="form-group">
+                                        <h:outputLabel for="email">e-mail</h:outputLabel>
+                                        <h:inputText id="email" value="#{sessionController.loggedInUser.email}" required="true" requiredMessage="Please enter your e-mail address" />
+                                        <h:message for="email" styleClass="error"/>
+                                    </div>   
+                                    <div class="form-group">
+                                        <h:outputLabel for="phone">Phone</h:outputLabel>
+                                        <h:inputText id="phone" value="#{sessionController.loggedInUser.phone}" required="true" requiredMessage="Please enter your phone number" />
+                                        <h:message for="phone" styleClass="error"/>
+                                    </div>                                      
+<!--                                    <div class="form-group">
+                                        <h:outputLabel for="role">Select your role</h:outputLabel><br/>
+                                        <h:selectOneMenu id="role" >
+                                            <f:selectItem itemValue="visitor" itemLabel="I want to be a visitor" />
+                                            <f:selectItem itemValue="renter" itemLabel="I want to be a renter too" />
+                                        </h:selectOneMenu>
+                                        <h:message for="role" styleClass="error"/>
+                                    </div>                                      -->
+
+                                    <div class="form-group">
+                                        <h:outputLabel for="photo">Photo</h:outputLabel>
+                                        <h:inputText id="photo" value="#{sessionController.loggedInUser.photo}" required="true" requiredMessage="Please enter your photo URL" />
+                                        <h:message for="photo" styleClass="error"/>
+                                    </div> 
+                                  
+                                    
+                                    <h:commandButton value="Save changes" class="big-link-1" action="#{sessionController.saveChanges}" />
+                                    <h:button value="Back" class="big-link-1" outcome="/userservices/profile" />
+                                </h:form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

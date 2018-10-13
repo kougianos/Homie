@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/Airbnb">
+    <Resource auth="Container" 
+              driverClassName="com.mysql.jdbc.Driver" 
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+              global="jdbc/airbnb" maxActive="100" 
+              maxIdle="30" maxWait="10000" 
+              name="jdbc/airbnb" 
+              removeAbandoned="true" 
+              removeAbandonedTimeout="60" 
+              type="javax.sql.DataSource" 
+              url="jdbc:mysql://localhost:3306/airbnb" 
+              username="root"
+              password="reversible1993"
+    />
+    
+    <!--    <Resource auth="Container" 
+    driverClassName="com.mysql.jdbc.Driver" 
+    maxActive="20"
+    maxIdle="10"
+    maxWait="-1" 
+    name="java:comp/env/jdbc/airbnb"
+    password="reversible1993" 
+    type="javax.sql.DataSource"
+    url="jdbc:mysql://localhost:3306/airbnb" 
+    username="root"/>-->
+</Context>
